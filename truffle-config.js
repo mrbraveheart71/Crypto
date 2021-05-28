@@ -1,7 +1,7 @@
 module.exports = {
   compilers: {
     solc: {
-      version: "^0.8.4"      },
+      version: "0.8.4"      },
       modelCheckerSettings: {
         // contains options for SMTChecker
       }
@@ -9,7 +9,7 @@ module.exports = {
   }
 
 
-module.exports = {
+//module.exports = {
   // Uncommenting the defaults below 
   // provides for an easier quick-start with Ganache.
   // You can also follow this format for other networks;
@@ -29,4 +29,4 @@ module.exports = {
   //  }
   //}
   //
-};
+//};
