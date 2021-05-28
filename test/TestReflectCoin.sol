@@ -7,7 +7,7 @@ import "../contracts/Reflect.sol";
 contract TestReflectCoin {
 
   function testInitialBalanceUsingDeployedContract() public {
-    Reflect reflect = Reflect(DeployedAddresses.Reflect());
+    REFLECT reflect = REFLECT(DeployedAddresses.REFLECT());
 
     uint expected = 100;
 
@@ -15,7 +15,7 @@ contract TestReflectCoin {
   }
 
   function testInitialBalanceWithNewReflectCoin() public {
-    Reflect reflect = new Reflect();
+    REFLECT reflect = new REFLECT();
 
     uint expected = 100;
 
