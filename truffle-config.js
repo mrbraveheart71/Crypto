@@ -1,10 +1,7 @@
 module.exports = {
   compilers: {
     solc: {
-      version: "0.8.4"      },
-      modelCheckerSettings: {
-        // contains options for SMTChecker
-      }
+      version: "0.8.4"      }
     }
   }
 
