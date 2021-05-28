@@ -17,7 +17,7 @@ contract TestReflectCoin {
   function testInitialBalanceWithNewReflectCoin() public {
     REFLECT reflect = new REFLECT();
 
-    uint expected = 100;
+    uint256 expected = 100000000000;
 
     Assert.equal(reflect.balanceOf(tx.origin), expected, "Owner should have 100 Reflect initially");
   }
