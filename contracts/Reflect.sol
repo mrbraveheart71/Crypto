@@ -2,10 +2,10 @@
  * Copyright © 2020 reflect.finance. ALL RIGHTS RESERVED.
  */
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.8.0;
 
 abstract contract Context {
-    function _msgSender() internal view virtual returns (address payable) {
+    function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
 
@@ -372,7 +372,7 @@ contract Ownable is Context {
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
      */
-    constructor () internal {
+    constructor ()  {
         address msgSender = _msgSender();
         _owner = msgSender;
         emit OwnershipTransferred(address(0), msgSender);
@@ -437,7 +437,7 @@ contract REFLECT is Context, IERC20, Ownable {
     string private _symbol = 'RFI';
     uint8 private _decimals = 9;
 
-    constructor () public {
+    constructor ()  {
         _rOwned[_msgSender()] = _rTotal;
         emit Transfer(address(0), _msgSender(), _tTotal);
     }
