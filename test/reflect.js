@@ -24,9 +24,9 @@ contract('Reflect', (accounts) => {
     // Get balances of first and second account after the transactions.
     const accountOneEndingBalance = (await ReflectInstance.balanceOf.call(accountOne)).toNumber();
     const accountTwoEndingBalance = (await ReflectInstance.balanceOf.call(accountTwo)).toNumber();
-    console.log(isExcluded(accountOne))
+    console.log((await ReflectInstance.isExcluded.call(accountOne)).toNumber())
     console.log(accountOneEndingBalance)
-    console.log(isExcluded(accountTwo))
+    console.log((await ReflectInstance.isExcluded.call(accountTwo)).toNumber())
     console.log(accountTwoEndingBalance)
 
     assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
