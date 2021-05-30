@@ -40,6 +40,10 @@ contract('Reflect', (accounts) => {
     //console.log((await ReflectInstance.isExcluded.call(accountTwo)))
     console.log(accountTwoEndingBalance/(10**9))
     console.log(accountThreeEndingBalance/(10**9))
+    
+    // Total Supply
+    console.log("Total Supply:")
+    console.log((await ReflectInstance.totalSupply.call()).toNumber()) 
 
     //assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
     //assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
