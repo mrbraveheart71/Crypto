@@ -23,8 +23,8 @@ contract('Reflect', (accounts) => {
     const amount = 10 * 10**9;
     await ReflectInstance.transfer(accountTwo, amount, { from: accountOne });
     // Make transaction from second account to third.
-    const amount = 1 * 10**9;
-    await ReflectInstance.transfer(accountTwo, amount, { from: accountThree });
+    const amount2 = 1 * 10**9;
+    await ReflectInstance.transfer(accountTwo, amount2, { from: accountThree });
 
     // Get balances of first and second account after the transactions.
     const accountOneEndingBalance = (await ReflectInstance.balanceOf.call(accountOne)).toNumber();
