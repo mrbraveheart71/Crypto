@@ -25,9 +25,9 @@ contract('Reflect', (accounts) => {
 
     // Make transaction from second account to third, back and forth, 10
     var i;
-    for (i = 0; i < 200; i++) {
-      await ReflectInstance.transfer(accountThree, 10, { from: accountTwo });
-      await ReflectInstance.transfer(accountTwo, 10, { from: accountThree });
+    for (i = 0; i < 50; i++) {
+      await ReflectInstance.transfer(accountThree, 10* 10**9, { from: accountTwo });
+      await ReflectInstance.transfer(accountTwo, 10 * 10**9, { from: accountThree });
     }
     
     // Get balances of first and second account after the transactions.
