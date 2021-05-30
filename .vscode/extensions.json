@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "hosho.solidity-debugger",
+        "juanblanco.solidity",
+        "ms-vscode.js-debug-nightly"
+    ]
+}

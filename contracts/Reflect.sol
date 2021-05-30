@@ -1,4 +1,5 @@
 /*
+    SPDX-License-Identifier: MIT
  * Copyright © 2020 reflect.finance. ALL RIGHTS RESERVED.
  */
 
@@ -454,7 +455,7 @@ contract REFLECT is Context, IERC20, Ownable {
         return _decimals;
     }
 
-    function totalSupply() public view override returns (uint256) {
+    function totalSupply() public pure override returns (uint256) {
         return _tTotal;
     }
 
