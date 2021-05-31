@@ -1,5 +1,5 @@
 const ConvertLib = artifacts.require("ConvertLib");
-const Reflect = artifacts.require("NewCoin");
+const NewCoin = artifacts.require("NewCoin");
 
 module.exports = function(deployer) {
   deployer.deploy(ConvertLib);
