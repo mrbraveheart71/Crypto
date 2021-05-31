@@ -1,8 +1,8 @@
 const NewCoin = artifacts.require("NewCoin");
 
 contract('NewCoin', (accounts) => {
-  it('should put 1000 Reflect in the first account', async () => {
-    const NewCoinInstance = await Reflect.deployed();
+  it('should put 1000 NewCoin in the first account', async () => {
+    const NewCoinInstance = await NewCoin.deployed();
     const balance = await NewCoinInstance.balanceOf.call(accounts[0]);
     assert.equal(balance.valueOf(), 1000/(10**9), "1000 wasn't in the first account");
   });
