@@ -18,9 +18,14 @@ contract('NewCoin', (accounts) => {
     await NewCoinInstance.transfer(accountTwo, 250 * 10**9, { from: accountOne });
     await NewCoinInstance.transfer(accountThree, 250 * 10**9, { from: accountOne });
 
+     //console.log((await ReflectInstance.isExcluded.call(accountOne)))
+     console.log((await NewCoinInstance.balanceOf.call(accountOne)).toNumber()/(10**9))
+     //console.log((await ReflectInstance.isExcluded.call(accountTwo)))
+     console.log((await NewCoinInstance.balanceOf.call(accountTwo)).toNumber()/(10**9))
+     console.log((await NewCoinInstance.balanceOf.call(accountThree)).toNumber()/(10**9))
     // Make transaction from second account to third, back and forth, 10
     var i;
-    for (i = 0; i < 50; i++) {
+    for (i = 0; i < 5; i++) {
       await NewCoinInstance.transfer(accountThree, 100* 10**9, { from: accountTwo });
       await NewCoinInstance.transfer(accountTwo, 100 * 10**9, { from: accountThree });
     }
