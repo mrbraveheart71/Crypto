@@ -22,6 +22,7 @@ contract('NewCoin', (accounts) => {
     const accountTwo = accounts[1];
     const accountThree = accounts[2];
 
+    wait(7000);  //7 seconds in milliseconds
     // Make transaction from first account to second and third 25 each
     await NewCoinInstance.transfer(accountTwo, 250 * 10**9, { from: accountOne });
     await NewCoinInstance.transfer(accountThree, 250 * 10**9, { from: accountOne });
