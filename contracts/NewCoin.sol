@@ -5,7 +5,7 @@
 
 pragma solidity ^0.8.4;
 
-import "contracts/Imports.sol";
+import "./Imports.sol";
 
 contract NewCoin is Context, IERC20, Ownable {
     using SafeMath for uint256;
