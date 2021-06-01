@@ -15,14 +15,14 @@ contract('NewCoin', (accounts) => {
     const accountThree = accounts[2];
 
     // Make transaction from first account to second and third 25 each
-    await NewCoinInstance.transfer(accountTwo, 25 * 10**9, { from: accountOne });
-    await NewCoinInstance.transfer(accountThree, 25 * 10**9, { from: accountOne });
+    await NewCoinInstance.transfer(accountTwo, 250 * 10**9, { from: accountOne });
+    await NewCoinInstance.transfer(accountThree, 250 * 10**9, { from: accountOne });
 
     // Make transaction from second account to third, back and forth, 10
     var i;
     for (i = 0; i < 50; i++) {
-      await NewCoinInstance.transfer(accountThree, 10* 10**9, { from: accountTwo });
-      await NewCoinInstance.transfer(accountTwo, 10 * 10**9, { from: accountThree });
+      await NewCoinInstance.transfer(accountThree, 100* 10**9, { from: accountTwo });
+      await NewCoinInstance.transfer(accountTwo, 100 * 10**9, { from: accountThree });
     }
     
     // Get balances of first and second account after the transactions.

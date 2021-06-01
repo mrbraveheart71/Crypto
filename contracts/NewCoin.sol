@@ -82,7 +82,7 @@ contract NewCoin is Context, IERC20, Ownable {
 
     function transfer(address recipient, uint256 amount) public override returns (bool) {
         address sender = _msgSender();
-        _transfer(_msgSender(), recipient, amount);
+        _transfer(sender, recipient, amount);
         emit Transfer(sender, recipient, amount);
         return true;
     }
