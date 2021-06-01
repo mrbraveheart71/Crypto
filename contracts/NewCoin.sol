@@ -21,7 +21,7 @@ contract NewCoin is Context, IERC20, Ownable {
     uint256 private _noTranscations = 0;
     uint256 private constant INITCOINTTOTAL = 1000 * 10**9;
     uint256 private constant MAXCOINTOTAL = 10**9 * 10**9;
-    uint256 private constant MAXOWNERSHIP = 10**40 * 10**9;
+    uint256 private constant MAXOWNERSHIP = 10**20 * 10**9;
     
     string private _name = 'New Coin Finance';
     string private _symbol = 'NewCoin';
@@ -54,15 +54,24 @@ contract NewCoin is Context, IERC20, Ownable {
 
     function tokenFromOwnerShip(uint256 coinShare) public view returns(uint256) {
         require(coinShare <= MAXOWNERSHIP, "Amount must be less than total ownership");
-        uint256 tokens = coinShare.mul(_coinTotal);  
-        tokens = tokens.div(MAXOWNERSHIP);
+        uint256 tokens = coinShare.mul(_coinTotal);
+
+        if( tokens.mod(MAXOWNERSHIP) > MAXOWNERSHIP.div(2)) {   // if else statement
+            tokens = tokens.div(MAXOWNERSHIP) + 1;
+        } else {
+            tokens = tokens.div(MAXOWNERSHIP);
+        }
         return tokens;
     }
 
     function ownershipFromToken(uint256 tokenAmount) public view returns(uint256) {
         require(tokenAmount <= _coinTotal, "Amount must be less than total coins");
         uint256 ownerShip = tokenAmount.mul(MAXOWNERSHIP); 
-        ownerShip = ownerShip.div(_coinTotal);
+        if( ownerShip.mod(_coinTotal) > _coinTotal.div(2)) {   // if else statement
+            ownerShip = ownerShip.div(_coinTotal) + 1;
+        } else {
+            ownerShip = ownerShip.div(MAXOWNERSHIP);
+        }
         return ownerShip;
     }
 
