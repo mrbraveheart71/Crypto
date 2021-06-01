@@ -33,7 +33,6 @@ contract NewCoin is Context, IERC20, Ownable {
 
     constructor ()  {
         _coinShareOwned[_msgSender()] = MAXOWNERSHIP;
-        _noTranscations = _noTranscations + 1;
         emit Transfer(address(0), _msgSender(), _coinTotal);
     }
 
@@ -84,7 +83,7 @@ contract NewCoin is Context, IERC20, Ownable {
         uint256 ownerShipToBeTransferred = ownershipFromToken(amount);
         _coinShareOwned[sender] = _coinShareOwned[sender].sub(ownerShipToBeTransferred);
         _coinShareOwned[recipient] = _coinShareOwned[recipient].add(ownerShipToBeTransferred);
-        _noTranscations = _noTranscations + 1;
+        //_noTranscations = _noTranscations + 1;
     }
 
     function transfer(address recipient, uint256 amount) public override returns (bool) {
