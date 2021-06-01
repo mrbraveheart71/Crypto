@@ -20,7 +20,7 @@ contract NewCoin is Context, IERC20, Ownable {
     uint256 private _coinTotal = 1000 * 10**9;
     uint256 private constant INITCOINTTOTAL = 1000 * 10**9;
     uint256 private constant MAXCOINTOTAL = 10**9 * 10**9;
-    uint256 private constant MAXOWNERSHIP = 10**15 * 10**9;
+    uint256 private constant MAXOWNERSHIP = 10**25 * 10**9;
     
     string private _name = 'New Coin Finance';
     string private _symbol = 'NewCoin';
