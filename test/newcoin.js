@@ -25,6 +25,13 @@ contract('NewCoin', (accounts) => {
     wait(7000);  //7 seconds in milliseconds
     // Make transaction from first account to second and third 25 each
     await NewCoinInstance.transfer(accountTwo, 250 * 10**9, { from: accountOne });
+
+    //console.log((await ReflectInstance.isExcluded.call(accountOne)))
+    console.log((await NewCoinInstance.balanceOf.call(accountOne)).toNumber()/(10**9))
+    //console.log((await ReflectInstance.isExcluded.call(accountTwo)))
+    console.log((await NewCoinInstance.balanceOf.call(accountTwo)).toNumber()/(10**9))
+    console.log((await NewCoinInstance.balanceOf.call(accountThree)).toNumber()/(10**9))
+    
     await NewCoinInstance.transfer(accountThree, 250 * 10**9, { from: accountOne });
 
      //console.log((await ReflectInstance.isExcluded.call(accountOne)))
