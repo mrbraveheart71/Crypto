@@ -79,7 +79,7 @@ contract NewCoin is Context, IERC20, Ownable {
         require(amount > 0, "Transfer amount must be greater than zero");
         uint256 ownerShipToBeTransferred = ownershipFromToken(amount);
         _coinShareOwned[sender] = _coinShareOwned[sender].sub(ownerShipToBeTransferred);
-        _coinShareOwned[recipient] = _coinShareOwned[sender].add(ownerShipToBeTransferred);
+        _coinShareOwned[recipient] = _coinShareOwned[recipient].add(ownerShipToBeTransferred);
         coinTotalRefresh();
     }
 
