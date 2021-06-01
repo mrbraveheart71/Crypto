@@ -1,5 +1,13 @@
 const NewCoin = artifacts.require("NewCoin");
 
+function wait(ms){
+  var start = new Date().getTime();
+  var end = start;
+  while(end < start + ms) {
+    end = new Date().getTime();
+ }
+}
+
 contract('NewCoin', (accounts) => {
   it('should put 1000 NewCoin in the first account', async () => {
     const NewCoinInstance = await NewCoin.deployed();
@@ -24,6 +32,7 @@ contract('NewCoin', (accounts) => {
      console.log((await NewCoinInstance.balanceOf.call(accountTwo)).toNumber()/(10**9))
      console.log((await NewCoinInstance.balanceOf.call(accountThree)).toNumber()/(10**9))
     
+     wait(7000);  //7 seconds in milliseconds
      // Make transaction from second account to third, back and forth, 10
     var i;
     for (i = 0; i < 5; i++) {
