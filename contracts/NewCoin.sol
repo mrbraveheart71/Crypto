@@ -11,7 +11,7 @@ contract NewCoin is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
 
-    uint256 private constant MAX = ~uint256(0);
+    //uint256 private constant MAX = ~uint256(0);
     // Share owned is % of MAX
     mapping (address => uint256) private _coinShareOwned;
     mapping (address => mapping (address => uint256)) private _allowances;
@@ -20,6 +20,7 @@ contract NewCoin is Context, IERC20, Ownable {
     uint256 private _coinTotal = 1000 * 10**9;
     uint256 private constant INITCOINTTOTAL = 1000 * 10**9;
     uint256 private constant MAXCOINTOTAL = 10**9 * 10**9;
+    uint256 private constant MAXOWNERSHIP = 10**15 * 10**9;
     
     string private _name = 'New Coin Finance';
     string private _symbol = 'NewCoin';
@@ -30,7 +31,7 @@ contract NewCoin is Context, IERC20, Ownable {
     uint256 private CHAINCURRENTTIME =  CHAINSTARTTIME;
 
     constructor ()  {
-        _coinShareOwned[_msgSender()] = MAX;
+        _coinShareOwned[_msgSender()] = MAXOWNERSHIP;
         emit Transfer(address(0), _msgSender(), _coinTotal);
     }
 
@@ -51,16 +52,16 @@ contract NewCoin is Context, IERC20, Ownable {
     }
 
     function tokenFromOwnerShip(uint256 coinShare) public view returns(uint256) {
-        require(coinShare <= MAX, "Amount must be less than total ownership");
-        uint256 tokens = coinShare.div(MAX);  
-        tokens = tokens.mul(_coinTotal);
+        require(coinShare <= MAXOWNERSHIP, "Amount must be less than total ownership");
+        uint256 tokens = coinShare.mul(_coinTotal);  
+        tokens = tokens.div(MAXOWNERSHIP);
         return tokens;
     }
 
     function ownershipFromToken(uint256 tokenAmount) public view returns(uint256) {
         require(tokenAmount <= _coinTotal, "Amount must be less than total coins");
-        uint256 ownerShip = tokenAmount.div(_coinTotal); 
-        ownerShip = ownerShip.mul(MAX);
+        uint256 ownerShip = tokenAmount.mul(MAXOWNERSHIP); 
+        ownerShip = ownerShip.div(_coinTotal);
         return ownerShip;
     }
 
