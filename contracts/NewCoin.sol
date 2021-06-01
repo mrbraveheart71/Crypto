@@ -70,7 +70,7 @@ contract NewCoin is Context, IERC20, Ownable {
         if( ownerShip.mod(_coinTotal) > _coinTotal.div(2)) {   // if else statement
             ownerShip = ownerShip.div(_coinTotal) + 1;
         } else {
-            ownerShip = ownerShip.div(MAXOWNERSHIP);
+            ownerShip = ownerShip.div(_coinTotal);
         }
         return ownerShip;
     }
