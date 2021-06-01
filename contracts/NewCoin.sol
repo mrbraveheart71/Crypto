@@ -22,6 +22,7 @@ contract NewCoin is Context, IERC20, Ownable {
     uint256 private constant INITCOINTTOTAL = 1000 * 10**9;
     uint256 private constant MAXCOINTOTAL = 10**9 * 10**9;
     uint256 private constant MAXOWNERSHIP = 10**20 * 10**9;
+    uint256 private constant ADDEDCOINSPERTRANSACTION = 100*10**9;
     
     string private _name = 'New Coin Finance';
     string private _symbol = 'NewCoin';
@@ -80,7 +81,10 @@ contract NewCoin is Context, IERC20, Ownable {
 
     function coinTotalRefresh() private   {
         //_coinTotal = INITCOINTTOTAL + block.timestamp - CHAINSTARTTIME;
-        _coinTotal = INITCOINTTOTAL + _noTranscations * 10**9;
+        _coinTotal = INITCOINTTOTAL + _noTranscations * ADDEDCOINSPERTRANSACTION;
+        if (_coinTotal > MAXCOINTOTAL) {
+            _coinTotal = MAXCOINTOTAL;
+        }
     }
 
    function _transfer(address sender, address recipient, uint256 amount) private {
