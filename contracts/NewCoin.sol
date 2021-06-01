@@ -18,6 +18,7 @@ contract NewCoin is Context, IERC20, Ownable {
     
     // We start with 1000 coins
     uint256 private _coinTotal = 1000 * 10**9;
+    uint256 private _noTranscations = 0;
     uint256 private constant INITCOINTTOTAL = 1000 * 10**9;
     uint256 private constant MAXCOINTOTAL = 10**9 * 10**9;
     uint256 private constant MAXOWNERSHIP = 10**25 * 10**9;
@@ -32,6 +33,7 @@ contract NewCoin is Context, IERC20, Ownable {
 
     constructor ()  {
         _coinShareOwned[_msgSender()] = MAXOWNERSHIP;
+        _noTranscations = _noTranscations + 1;
         emit Transfer(address(0), _msgSender(), _coinTotal);
     }
 
@@ -70,13 +72,15 @@ contract NewCoin is Context, IERC20, Ownable {
     }
 
     function coinTotalRefresh() private   {
-        _coinTotal = INITCOINTTOTAL + block.timestamp - CHAINSTARTTIME;
+        //_coinTotal = INITCOINTTOTAL + block.timestamp - CHAINSTARTTIME;
+        _coinTotal = INITCOINTTOTAL + _noTranscations * 10**9;
     }
 
    function _transfer(address sender, address recipient, uint256 amount) private {
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");
+        _noTranscations = _noTranscations + 1;
         coinTotalRefresh();
         uint256 ownerShipToBeTransferred = ownershipFromToken(amount);
         _coinShareOwned[sender] = _coinShareOwned[sender].sub(ownerShipToBeTransferred);
