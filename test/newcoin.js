@@ -56,7 +56,7 @@ contract('NewCoin', (accounts) => {
     
     // Total Supply
     console.log("Total Supply:")
-    console.log((await NewCoinInstance.totalSupply.call()).toNumber()) 
+    console.log((await NewCoinInstance.totalSupply.call()).toNumber()/(10**9)) 
 
     //assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
     //assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");

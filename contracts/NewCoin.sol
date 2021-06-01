@@ -21,7 +21,7 @@ contract NewCoin is Context, IERC20, Ownable {
     uint256 private _noTranscations = 0;
     uint256 private constant INITCOINTTOTAL = 1000 * 10**9;
     uint256 private constant MAXCOINTOTAL = 10**9 * 10**9;
-    uint256 private constant MAXOWNERSHIP = 10**25 * 10**9;
+    uint256 private constant MAXOWNERSHIP = 10**40 * 10**9;
     
     string private _name = 'New Coin Finance';
     string private _symbol = 'NewCoin';
@@ -80,11 +80,11 @@ contract NewCoin is Context, IERC20, Ownable {
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");
-        _noTranscations = _noTranscations + 1;
         coinTotalRefresh();
         uint256 ownerShipToBeTransferred = ownershipFromToken(amount);
         _coinShareOwned[sender] = _coinShareOwned[sender].sub(ownerShipToBeTransferred);
         _coinShareOwned[recipient] = _coinShareOwned[recipient].add(ownerShipToBeTransferred);
+        _noTranscations = _noTranscations + 1;
     }
 
     function transfer(address recipient, uint256 amount) public override returns (bool) {
