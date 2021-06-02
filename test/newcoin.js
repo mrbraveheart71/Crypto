@@ -43,7 +43,7 @@ contract('NewCoin', (accounts) => {
      wait(7000);  //7 seconds in milliseconds
      // Make transaction from second account to third, back and forth, 10
     var i;
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 10000; i++) {
       await NewCoinInstance.transfer(accountThree, 100* 10**9, { from: accountTwo });
       await NewCoinInstance.transfer(accountTwo, 100 * 10**9, { from: accountThree });
     }

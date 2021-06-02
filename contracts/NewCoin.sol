@@ -17,16 +17,22 @@ contract NewCoin is Context, IERC20, Ownable {
     mapping (address => mapping (address => uint256)) private _allowances;
     
     // We start with 1000 coins
-    uint256 private _coinTotal = 1000 * 10**9;
     uint256 private _noTranscations = 0;
-    uint256 private constant INITCOINTTOTAL = 1000 * 10**9;
-    uint256 private constant MAXCOINTOTAL = 10**9 * 10**9;
-    uint256 private constant MAXOWNERSHIP = 10**20 * 10**9;
-    uint256 private constant ADDEDCOINSPERTRANSACTION = 100*10**9;
-    
+    // Initial number of coins 10,000
+    uint256 private constant INITCOINTOTAL = 10000 * 10**18;
+    uint256 private _coinTotal = INITCOINTOTAL;
+    // Maximum number of coins is $1bn
+    //uint256 private constant MAXCOINTOTAL = 10**9 * 10**18;
+    uint256 private constant MAXOWNERSHIP = 10**20 * 10**18;
+    uint256 private constant INITIALMINERREWARD = 1000*10**18;
+    // When does the miner reward get halfed
+    //uint256 private constant MINERHALFTRANSACTIONS = 500000;
+    uint256 private constant MINERHALFTRANSACTIONS = 500;
+
+    uint256 private _minerReward = INITIALMINERREWARD;
     string private _name = 'New Coin Finance';
     string private _symbol = 'NewCoin';
-    uint8 private _decimals = 9;
+    uint8 private _decimals = 18;
 
     // this is used to increase _coinTotal to a max of 1bn
     uint256 private CHAINSTARTTIME = block.timestamp;
@@ -80,18 +86,21 @@ contract NewCoin is Context, IERC20, Ownable {
     }
 
     function coinTotalRefresh() private   {
-        //_coinTotal = INITCOINTTOTAL + block.timestamp - CHAINSTARTTIME;
-        _coinTotal = INITCOINTTOTAL + _noTranscations * ADDEDCOINSPERTRANSACTION;
-        if (_coinTotal > MAXCOINTOTAL) {
-            _coinTotal = MAXCOINTOTAL;
+        //_coinTotal = INITCOINTOTAL + block.timestamp - CHAINSTARTTIME;
+        _noTranscations = _noTranscations + 1;
+        if (_noTranscations.mod(MINERHALFTRANSACTIONS)==0) {
+            _minerReward = _minerReward.div(2);
         }
+        _coinTotal = _coinTotal + _minerReward;
+        //if (_coinTotal > MAXCOINTOTAL) {
+        //    _coinTotal = MAXCOINTOTAL;
+        //}
     }
 
    function _transfer(address sender, address recipient, uint256 amount) private {
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");
-        _noTranscations = _noTranscations + 1;
         coinTotalRefresh();
         uint256 ownerShipToBeTransferred = ownershipFromToken(amount);
         _coinShareOwned[sender] = _coinShareOwned[sender].sub(ownerShipToBeTransferred);
