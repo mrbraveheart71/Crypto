@@ -30,6 +30,7 @@ contract('NewCoin', (accounts) => {
     await NewCoinInstance.transfer(accountTwo, "250000000000000000000", { from: accountOne });
     console.log("Total Supply:");
     console.log((new BN(await NewCoinInstance.totalSupply.call()))/(denominator));
+    console.log(await NewCoinInstance.totalSupply.call());
 
     //console.log((await ReflectInstance.isExcluded.call(accountOne)))
     //console.log((await NewCoinInstance.balanceOf.call(accountOne)).toNumber()/(10**9))
@@ -53,6 +54,7 @@ contract('NewCoin', (accounts) => {
       await NewCoinInstance.transfer(accountTwo, "100000000000000000000", { from: accountThree });
       console.log("Total Supply:");
       console.log((new BN(await NewCoinInstance.totalSupply.call()))/(denominator));
+      console.log(await NewCoinInstance.totalSupply.call());
     }
 
     console.log((new BN(await NewCoinInstance.balanceOf.call(accountOne)))/(denominator));

@@ -18,7 +18,7 @@ contract NewCoin is Context, IERC20, Ownable {
     
     // We start with 1000 coins
     uint256 private _noTranscations = 0;
-    // Initial number of coins 1,000,000
+    // Initial number of coins 100,000
     uint256 private constant INITCOINTOTAL = 1000000 * 10**18;
     uint256 private _coinTotal = INITCOINTOTAL;
     // Maximum number of coins is $1bn
