@@ -24,7 +24,7 @@ contract('NewCoin', (accounts) => {
 
     //wait(7000);  //7 seconds in milliseconds
     // Make transaction from first account to second and third 25 each
-    await NewCoinInstance.transfer(accountTwo, 250 * 10**9, { from: accountOne });
+    await NewCoinInstance.transfer(accountTwo, 250 * 10**18, { from: accountOne });
 
     //console.log((await ReflectInstance.isExcluded.call(accountOne)))
     //console.log((await NewCoinInstance.balanceOf.call(accountOne)).toNumber()/(10**9))
@@ -32,7 +32,7 @@ contract('NewCoin', (accounts) => {
     //console.log((await NewCoinInstance.balanceOf.call(accountTwo)).toNumber()/(10**9))
     //console.log((await NewCoinInstance.balanceOf.call(accountThree)).toNumber()/(10**9))
     
-    await NewCoinInstance.transfer(accountThree, 250 * 10**9, { from: accountOne });
+    await NewCoinInstance.transfer(accountThree, 250 * 10**18, { from: accountOne });
 
      //console.log((await ReflectInstance.isExcluded.call(accountOne)))
      console.log((await NewCoinInstance.balanceOf.call(accountOne)).toNumber()/(10**9))
@@ -44,8 +44,8 @@ contract('NewCoin', (accounts) => {
      // Make transaction from second account to third, back and forth, 10
     var i;
     for (i = 0; i < 1; i++) {
-      await NewCoinInstance.transfer(accountThree, 100* 10**9, { from: accountTwo });
-      await NewCoinInstance.transfer(accountTwo, 100 * 10**9, { from: accountThree });
+      await NewCoinInstance.transfer(accountThree, 100* 10**18, { from: accountTwo });
+      await NewCoinInstance.transfer(accountTwo, 100 * 10**18, { from: accountThree });
     }
     
     // Get balances of first and second account after the transactions.
@@ -54,16 +54,16 @@ contract('NewCoin', (accounts) => {
     const accountThreeEndingBalance = (await NewCoinInstance.balanceOf.call(accountThree)).toNumber();
 
     //console.log((await ReflectInstance.isExcluded.call(accountOne)))
-    console.log(accountOneEndingBalance/(10**9))
+    console.log(accountOneEndingBalance/(10**18))
     //console.log((await ReflectInstance.isExcluded.call(accountTwo)))
-    console.log(accountTwoEndingBalance/(10**9))
-    console.log(accountThreeEndingBalance/(10**9))
+    console.log(accountTwoEndingBalance/(10**18))
+    console.log(accountThreeEndingBalance/(10**18))
     
     //console.log((await NewCoinInstance.ownershipFromToken.call(100* 10**9)))
     
     // Total Supply
     console.log("Total Supply:")
-    console.log((await NewCoinInstance.totalSupply.call()).toNumber()/(10**9)) 
+    console.log((await NewCoinInstance.totalSupply.call()).toNumber()/(10**18)) 
 
     //assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
     //assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
