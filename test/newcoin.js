@@ -13,7 +13,7 @@ contract('NewCoin', (accounts) => {
   it('should put 1000 NewCoin in the first account', async () => {
     const NewCoinInstance = await NewCoin.deployed();
     console.log("Total Supply:")
-    console.log((new BN(await NewCoinInstance.totalSupply.call()))/(10**18))
+    console.log((new BN(await NewCoinInstance.totalSupply.call())).div(10**18))
    //assert.equal(balance.valueOf(), 1000/(10**9), "1000 wasn't in the first account");
   });
   it('should send coin correctly', async () => {
@@ -28,7 +28,7 @@ contract('NewCoin', (accounts) => {
     // Make transaction from first account to second and third 25 each
     await NewCoinInstance.transfer(accountTwo, "250000000000000000000", { from: accountOne });
     console.log("Total Supply:")
-    console.log((new BN(await NewCoinInstance.totalSupply.call()))/(10**18))
+    console.log((new BN(await NewCoinInstance.totalSupply.call())).div(10**18))
 
     //console.log((await ReflectInstance.isExcluded.call(accountOne)))
     //console.log((await NewCoinInstance.balanceOf.call(accountOne)).toNumber()/(10**9))
@@ -42,7 +42,7 @@ contract('NewCoin', (accounts) => {
     console.log((new BN(await NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
     console.log((new BN(await NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
     console.log("Total Supply:")
-    console.log((new BN(await NewCoinInstance.totalSupply.call()))/(10**18))
+    console.log((new BN(await NewCoinInstance.totalSupply.call())).div(10**18))
     
      wait(7000);  //7 seconds in milliseconds
      // Make transaction from second account to third, back and forth, 10
@@ -60,7 +60,7 @@ contract('NewCoin', (accounts) => {
     
     // Total Supply
     console.log("Total Supply:")
-    console.log((new BN(await NewCoinInstance.totalSupply.call()))/(10**18))
+    console.log((new BN(await NewCoinInstance.totalSupply.call())).div(10**18))
 
     //assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
     //assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
