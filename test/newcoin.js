@@ -1,5 +1,4 @@
 const NewCoin = artifacts.require("NewCoin");
-import BN from 'bn.js';
 
 function wait(ms){
   var start = new Date().getTime();
@@ -35,9 +34,9 @@ contract('NewCoin', (accounts) => {
     
     await NewCoinInstance.transfer(accountThree, "250000000000000000000", { from: accountOne });
 
-     console.log((await new BN(NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
-     console.log((await new BN(NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
-     console.log((await new BN(NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
+    console.log((await new BN(NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
+    console.log((await new BN(NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
+    console.log((await new BN(NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
     
      wait(7000);  //7 seconds in milliseconds
      // Make transaction from second account to third, back and forth, 10
