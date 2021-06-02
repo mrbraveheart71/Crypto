@@ -35,9 +35,9 @@ contract('NewCoin', (accounts) => {
     
     await NewCoinInstance.transfer(accountThree, "250000000000000000000", { from: accountOne });
 
-    console.log((await new BN(NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
-    console.log((await new BN(NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
-    console.log((await new BN(NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
+    console.log((new BN(await NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
+    console.log((new BN(await NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
+    console.log((new BN(await NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
     
      wait(7000);  //7 seconds in milliseconds
      // Make transaction from second account to third, back and forth, 10
@@ -47,13 +47,13 @@ contract('NewCoin', (accounts) => {
       await NewCoinInstance.transfer(accountTwo, "100000000000000000000", { from: accountThree });
     }
 
-    console.log((await new BN(NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
-    console.log((await new BN(NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
-    console.log((await new BN(NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
+    console.log((new BN(await NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
+    console.log((new BN(await NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
+    console.log((new BN(await NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
     
     // Total Supply
     console.log("Total Supply:")
-    console.log((await new BN(NewCoinInstance.totalSupply.call()))/(10**18))
+    console.log((new BN(await NewCoinInstance.totalSupply.call()))/(10**18))
 
     //assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
     //assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
