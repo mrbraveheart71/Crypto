@@ -88,10 +88,10 @@ contract NewCoin is Context, IERC20, Ownable {
     function coinTotalRefresh() private   {
         //_coinTotal = INITCOINTOTAL + block.timestamp - CHAINSTARTTIME;
         _noTranscations = _noTranscations + 1;
+        _coinTotal = _coinTotal + _minerReward;
         if (_noTranscations.mod(MINERHALFTRANSACTIONS)==0) {
             _minerReward = _minerReward.div(2);
         }
-        _coinTotal = _coinTotal + _minerReward;
         //if (_coinTotal > MAXCOINTOTAL) {
         //    _coinTotal = MAXCOINTOTAL;
         //}
