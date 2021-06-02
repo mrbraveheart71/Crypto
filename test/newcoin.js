@@ -1,5 +1,5 @@
 const NewCoin = artifacts.require("NewCoin");
-const BigNumber = require("bignumber.js");
+import BigNumber from "bignumber.js";
 
 function wait(ms){
   var start = new Date().getTime();
