@@ -45,6 +45,8 @@ contract('NewCoin', (accounts) => {
     for (i = 0; i < 50; i++) {
       await NewCoinInstance.transfer(accountThree, "100000000000000000000", { from: accountTwo });
       await NewCoinInstance.transfer(accountTwo, "100000000000000000000", { from: accountThree });
+      console.log("Total Supply:")
+      console.log((new BN(await NewCoinInstance.totalSupply.call()))/(10**18))
     }
 
     console.log((new BN(await NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
