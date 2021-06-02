@@ -35,8 +35,8 @@ contract NewCoin is Context, IERC20, Ownable {
     uint8 private _decimals = 18;
 
     // this is used to increase _coinTotal to a max of 1bn
-    uint256 private CHAINSTARTTIME = block.timestamp;
-    uint256 private CHAINCURRENTTIME =  CHAINSTARTTIME;
+    //uint256 private CHAINSTARTTIME = block.timestamp;
+    //uint256 private CHAINCURRENTTIME =  CHAINSTARTTIME;
 
     constructor ()  {
         _coinShareOwned[_msgSender()] = MAXOWNERSHIP;
