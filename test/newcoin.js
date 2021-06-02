@@ -10,7 +10,7 @@ function wait(ms){
 }
 
 contract('NewCoin', (accounts) => {
-  const denominator = new BN(10**18);
+  const denominator = new BN("1000000000000000000");
   it('should put 1000 NewCoin in the first account', async () => {
     const NewCoinInstance = await NewCoin.deployed();
     console.log("Total Supply:");
