@@ -1,4 +1,5 @@
 const NewCoin = artifacts.require("NewCoin");
+const BigNumber = require("bignumber.js");
 
 function wait(ms){
   var start = new Date().getTime();
@@ -34,11 +35,9 @@ contract('NewCoin', (accounts) => {
     
     await NewCoinInstance.transfer(accountThree, "250000000000000000000", { from: accountOne });
 
-     //console.log((await ReflectInstance.isExcluded.call(accountOne)))
-     console.log((await NewCoinInstance.balanceOf.call(accountOne)).toNumber()/(10**18))
-     //console.log((await ReflectInstance.isExcluded.call(accountTwo)))
-     console.log((await NewCoinInstance.balanceOf.call(accountTwo)).toNumber()/(10**18))
-     console.log((await NewCoinInstance.balanceOf.call(accountThree)).toNumber()/(10**18))
+     console.log((await new BigNumber(NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
+     console.log((await new BigNumber(NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
+     console.log((await new BigNumber(NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
     
      wait(7000);  //7 seconds in milliseconds
      // Make transaction from second account to third, back and forth, 10
@@ -47,23 +46,14 @@ contract('NewCoin', (accounts) => {
       await NewCoinInstance.transfer(accountThree, "100000000000000000000", { from: accountTwo });
       await NewCoinInstance.transfer(accountTwo, "100000000000000000000", { from: accountThree });
     }
-    
-    // Get balances of first and second account after the transactions.
-    const accountOneEndingBalance = (await NewCoinInstance.balanceOf.call(accountOne)).toNumber();
-    const accountTwoEndingBalance = (await NewCoinInstance.balanceOf.call(accountTwo)).toNumber();
-    const accountThreeEndingBalance = (await NewCoinInstance.balanceOf.call(accountThree)).toNumber();
 
-    //console.log((await ReflectInstance.isExcluded.call(accountOne)))
-    console.log(accountOneEndingBalance/(10**18))
-    //console.log((await ReflectInstance.isExcluded.call(accountTwo)))
-    console.log(accountTwoEndingBalance/(10**18))
-    console.log(accountThreeEndingBalance/(10**18))
-    
-    //console.log((await NewCoinInstance.ownershipFromToken.call(100* 10**9)))
+    console.log((await new BigNumber(NewCoinInstance.balanceOf.call(accountOne)))/(10**18))
+    console.log((await new BigNumber(NewCoinInstance.balanceOf.call(accountTwo)))/(10**18))
+    console.log((await new BigNumber(NewCoinInstance.balanceOf.call(accountThree)))/(10**18))
     
     // Total Supply
     console.log("Total Supply:")
-    console.log((await NewCoinInstance.totalSupply.call()).toNumber()/(10**18)) 
+    console.log((await new BigNumber(NewCoinInstance.totalSupply.call()))/(10**18))
 
     //assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
     //assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
