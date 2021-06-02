@@ -1,4 +1,5 @@
 const NewCoin = artifacts.require("NewCoin");
+const BN = require("bn.js");
 
 function wait(ms){
   var start = new Date().getTime();
