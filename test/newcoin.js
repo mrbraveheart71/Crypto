@@ -59,7 +59,7 @@ contract('NewCoin', (accounts) => {
     console.log(accountTwoEndingBalance/(10**9))
     console.log(accountThreeEndingBalance/(10**9))
     
-    console.log((await NewCoinInstance.ownershipFromToken.call(100* 10**9)))
+    //console.log((await NewCoinInstance.ownershipFromToken.call(100* 10**9)))
     
     // Total Supply
     console.log("Total Supply:")
