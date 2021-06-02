@@ -27,7 +27,7 @@ contract NewCoin is Context, IERC20, Ownable {
     uint256 private constant INITIALMINERREWARD = 1000*10**18;
     // When does the miner reward get halfed
     //uint256 private constant MINERHALFTRANSACTIONS = 500000;
-    uint256 private constant MINERHALFTRANSACTIONS = 500;
+    uint256 private constant MINERHALFTRANSACTIONS = 5;
 
     uint256 private _minerReward = INITIALMINERREWARD;
     string private _name = 'New Coin Finance';
