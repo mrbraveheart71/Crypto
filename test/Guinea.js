@@ -33,17 +33,17 @@ contract('Guinea', (accounts) => {
     await GuineaInstance.approve(accountFour, "20000000000000000000000", { from: accountOne });
     await GuineaInstance.transfer(accountTwo, "20000000000000000000000", { from: accountOne });
     await GuineaInstance.transfer(accountThree, "20000000000000000000000", { from: accountOne });
-      
+  
     console.log("Total Supply after first set of transactions:");
-    console.log((new BN(await GuineaInstance.totalSupply.call()))/(denominator));
+    console.log((new BN(await GuineaInstance.totalSupply.call())).div(denominator));
     console.log("Account One Balance:");
-    console.log((new BN(await GuineaInstance.balanceOf.call(accountOne)))/(denominator));
+    console.log((new BN(await GuineaInstance.balanceOf.call(accountOne))).div(denominator));
     console.log("Account Two Balance:");
-    console.log((new BN(await GuineaInstance.balanceOf.call(accountTwo)))/(denominator));
+    console.log((new BN(await GuineaInstance.balanceOf.call(accountTwo))).div(denominator));
     console.log("Account Three Balance:");
-    console.log((new BN(await GuineaInstance.balanceOf.call(accountThree)))/(denominator));
+    console.log((new BN(await GuineaInstance.balanceOf.call(accountThree))).div(denominator));
     console.log("Account Four Allowance Received from Account One:");
-    console.log((new BN(await GuineaInstance.allowance.call(accountOne, accountFour)))/(denominator));
+    console.log((new BN(await GuineaInstance.allowance.call(accountOne, accountFour))).div(denominator));
     console.log("Account Four Balance:");
     console.log((new BN(await GuineaInstance.balanceOf.call(accountFour)))/(denominator));
     
@@ -51,13 +51,13 @@ contract('Guinea', (accounts) => {
     await GuineaInstance.transferFrom(accountOne, accountFive,"10000000000000000000000", { from: accountFour });
 
     console.log("Total Supply after second set of transactions:");
-    console.log((new BN(await GuineaInstance.totalSupply.call()))/(denominator));
+    console.log((new BN(await GuineaInstance.totalSupply.call())).div(denominator));
     console.log("Account One Balance:");
-    console.log((new BN(await GuineaInstance.balanceOf.call(accountOne)))/(denominator));
+    console.log((new BN(await GuineaInstance.balanceOf.call(accountOne))).div(denominator));
     console.log("Account Four Allowance Received from Account One:");
-    console.log((new BN(await GuineaInstance.allowance.call(accountOne, accountFour)))/(denominator));
+    console.log((new BN(await GuineaInstance.allowance.call(accountOne, accountFour))).div(denominator));
     console.log("Account Four Balance:");
-    console.log((new BN(await GuineaInstance.balanceOf.call(accountFour)))/(denominator));
+    console.log((new BN(await GuineaInstance.balanceOf.call(accountFour))).div(denominator));
   
     // Make transaction from second account to third, back and forth, 10
     //var i;
