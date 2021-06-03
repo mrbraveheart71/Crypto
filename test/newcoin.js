@@ -30,7 +30,7 @@ contract('NewCoin', (accounts) => {
     // Make transaction from Account one, 20K each to two and three
     // Also do an approve to account four at the very beginning
     // 18 zeros 000000000000000000
-    await NewCoinInstance.transfer(accountFour, "20000000000000000000000", { from: accountOne });
+    await NewCoinInstance.approve(accountFour, "20000000000000000000000", { from: accountOne });
     await NewCoinInstance.transfer(accountTwo, "20000000000000000000000", { from: accountOne });
     await NewCoinInstance.transfer(accountThree, "20000000000000000000000", { from: accountOne });
       
