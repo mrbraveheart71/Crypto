@@ -23,7 +23,7 @@ contract Guinea is Context, IERC20, Ownable {
     uint256 private _coinTotal = INITCOINTOTAL;
     // Maximum number of coins is $1bn
     //uint256 private constant MAXCOINTOTAL = 10**9 * 10**18;
-    uint256 private constant MAXOWNERSHIP = 10**20 * 10**18;
+    uint256 private constant MAXOWNERSHIP = 10**10 * 10**18;
     uint256 private constant INITIALMINERREWARD = 100 *10**18;
     // When does the miner reward get halfed
     //uint256 private constant MINERHALFTRANSACTIONS = 500000;
