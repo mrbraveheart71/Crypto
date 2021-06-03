@@ -67,7 +67,6 @@ contract Guinea is Context, IERC20, Ownable {
         } else {
             tokens = tokens.div(MAXOWNERSHIP);
         }
-        tokens = tokens.div(MAXOWNERSHIP);
         return tokens;
     }
 
@@ -79,7 +78,6 @@ contract Guinea is Context, IERC20, Ownable {
         } else {
             ownerShip = ownerShip.div(_coinTotal);
         }
-        ownerShip = ownerShip.div(_coinTotal);
         return ownerShip;
     }
 
