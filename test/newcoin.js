@@ -50,7 +50,7 @@ contract('NewCoin', (accounts) => {
     // Now spend the allowance that account 4 received to account 5
     await NewCoinInstance.transferFrom(accountOne, accountFive,"10000000000000000000000", { from: accountFour });
 
-    console.log("Total Supply after first set of transactions:");
+    console.log("Total Supply after second set of transactions:");
     console.log((new BN(await NewCoinInstance.totalSupply.call()))/(denominator));
     console.log("Account One Balance:");
     console.log((new BN(await NewCoinInstance.balanceOf.call(accountOne)))/(denominator));
@@ -70,7 +70,7 @@ contract('NewCoin', (accounts) => {
     //}
 
     // Total Supply at the very End
-    console.log("Total Supply after first set of transactions:");
+    console.log("Total Supply after all transactions:");
     console.log((new BN(await NewCoinInstance.totalSupply.call()))/(denominator));
     //assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
     //assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
