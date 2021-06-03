@@ -62,22 +62,24 @@ contract NewCoin is Context, IERC20, Ownable {
     function tokenFromOwnerShip(uint256 coinShare) public view returns(uint256) {
         require(coinShare <= MAXOWNERSHIP, "Amount must be less than total ownership");
         uint256 tokens = coinShare.mul(_coinTotal);
-        if( tokens.mod(MAXOWNERSHIP) > MAXOWNERSHIP.div(2)) {   // if else statement
-            tokens = tokens.div(MAXOWNERSHIP) + 1;
-        } else {
-            tokens = tokens.div(MAXOWNERSHIP);
-        }
+        //if( tokens.mod(MAXOWNERSHIP) > MAXOWNERSHIP.div(2)) {   // if else statement
+        //    tokens = tokens.div(MAXOWNERSHIP) + 1;
+        //} else {
+        //    tokens = tokens.div(MAXOWNERSHIP);
+        //}
+        tokens = tokens.div(MAXOWNERSHIP);
         return tokens;
     }
 
     function ownershipFromToken(uint256 tokenAmount) public view returns(uint256) {
         require(tokenAmount <= _coinTotal, "Amount must be less than total coins");
         uint256 ownerShip = tokenAmount.mul(MAXOWNERSHIP); 
-        if( ownerShip.mod(_coinTotal) > _coinTotal.div(2)) {   // if else statement
-            ownerShip = ownerShip.div(_coinTotal) + 1;
-        } else {
-            ownerShip = ownerShip.div(_coinTotal);
-        }
+        //if( ownerShip.mod(_coinTotal) > _coinTotal.div(2)) {   // if else statement
+        //    ownerShip = ownerShip.div(_coinTotal) + 1;
+        //} else {
+        //    ownerShip = ownerShip.div(_coinTotal);
+        //}
+        ownerShip = ownerShip.div(_coinTotal);
         return ownerShip;
     }
 
