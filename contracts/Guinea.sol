@@ -1,13 +1,13 @@
 /*
     SPDX-License-Identifier: MIT
- * Copyright © 2020 NewCoin. ALL RIGHTS RESERVED.
+ * Copyright © 2020 Guinea. ALL RIGHTS RESERVED.
  */
 
 pragma solidity ^0.8.4;
 
 import "./Imports.sol";
 
-contract NewCoin is Context, IERC20, Ownable {
+contract Guinea is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
 
@@ -30,8 +30,8 @@ contract NewCoin is Context, IERC20, Ownable {
     uint256 private constant MINERHALFTRANSACTIONS = 5000000;
 
     uint256 private _minerReward = INITIALMINERREWARD;
-    string private _name = 'New Coin Finance';
-    string private _symbol = 'NewCoin';
+    string private _name = 'Guinea Token';
+    string private _symbol = 'Guinea';
     uint8 private _decimals = 18;
 
     // this is used to increase _coinTotal to a max of 1bn
