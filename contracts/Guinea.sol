@@ -1,5 +1,5 @@
 /*
-    SPDX-License-Identifier: MIT
+    SPDX-License-Identifier: Guinea
  * Copyright © 2020 Guinea. ALL RIGHTS RESERVED.
  */
 
