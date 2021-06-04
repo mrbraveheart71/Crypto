@@ -58,6 +58,8 @@ contract('Guinea', (accounts) => {
     console.log((new BN(await GuineaInstance.allowance.call(accountOne, accountFour))).div(denominator));
     console.log("Account Four Balance:");
     console.log((new BN(await GuineaInstance.balanceOf.call(accountFour))).div(denominator));
+    console.log("Account Five Balance:");
+    console.log((new BN(await GuineaInstance.balanceOf.call(accountFive))).div(denominator));
   
     // Make transaction from second account to third, back and forth, 10
     //var i;

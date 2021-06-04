@@ -101,10 +101,10 @@ contract Guinea is Context, IERC20, Ownable {
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");
-        coinTotalRefresh();
         uint256 ownerShipToBeTransferred = ownershipFromToken(amount);
         _coinShareOwned[sender] = _coinShareOwned[sender].sub(ownerShipToBeTransferred);
         _coinShareOwned[recipient] = _coinShareOwned[recipient].add(ownerShipToBeTransferred);
+        coinTotalRefresh();
     }
 
     function transfer(address recipient, uint256 amount) public override returns (bool) {
